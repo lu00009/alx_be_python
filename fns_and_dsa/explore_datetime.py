@@ -10,6 +10,8 @@ def calculate_future_date():
     future_date = current_date + datetime.timedelta(days=num_days)
     formatted_datetime = future_date.strftime("%Y-%m-%d %H:%M:%S")
     print(f"Current date and time is: {formatted_datetime}")
-
-display_current_datetime()
-calculate_future_date()
+def main():
+    display_current_datetime()
+    calculate_future_date()
+if __name__ == "__main__":
+    main()
