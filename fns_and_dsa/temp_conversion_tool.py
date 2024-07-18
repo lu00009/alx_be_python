@@ -12,21 +12,22 @@ def convert_to_fahrenheit(celsius):
     return fahrenheit
 
 def main():
-    if 'FAHRENHEIT_TO_CELSIUS_FACTOR' not in globals() or 'CELSIUS_TO_FAHRENHEIT_FACTOR' not in globals():
-        print("Conversion factors are not defined.")
-        return
-
-    temp = float(input("Enter the temperature to convert: "))
-    temp_type = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
-    
-    if temp_type == 'C':
-        fahrenheit = convert_to_fahrenheit(temp)
-        print(f"{temp}°C is {fahrenheit:.2f}°F")
-    elif temp_type == 'F':
-        celsius = convert_to_celsius(temp)
-        print(f"{temp}°F is {celsius:.2f}°C")
-    else:
-        print("Invalid input. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
+    while True:
+        try:
+            temp = float(input("Enter the temperature to convert: "))
+            temp_type = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
+            if temp_type not in ("C","F"):
+                raise ValueError("Invalid unit.please enter C or F.")
+            if temp_type == 'C':
+                fahrenheit = convert_to_fahrenheit(temp)
+                print(f"{temp}°C is {fahrenheit:.13f}°F")
+            else:
+                celsius = convert_to_celsius(temp)
+                print(f"{temp}°F is {celsius:.13f}°C")
+            break
+        except ValueError as e:
+            
+            print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
